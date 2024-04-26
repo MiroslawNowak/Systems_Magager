@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Technician</title>
+</head>
+<body>
+<form th:object="${technician}" th:method="post">
+
+    <div>
+        <label for="firstName">First name: <br>
+            <input type="text" th:field="*{firstName}" id="firstName"/>
+        </label>
+    </div>
+    <div>
+        <label for="lastName">Last name: <br>
+            <input type="text" th:field="*{lastName}" id="lastName"/>
+        </label>
+    </div>
+    <div>
+        <label for="passValidDate">Pass validity date: <br>
+            <input type="date" th:field="*{passValidityDate}" id="passValidDate"/>
+        </label>
+    </div>
+    <div>
+        <label for="inspectionCompany">Inspection company: <br>
+            <select th:field="*{inspectionCompany}" id="inspectionCompany">
+                <option th:each="company : ${inspection_companies}" th:value="${company.id}" th:text="${company.name}"/>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label for="phoneNumber">Phone number: <br>
+            <input type="number" th:field="*{phoneNumber}" id="phoneNumber"/>
+        </label>
+    </div>
+    <div><input type="submit" value="Add"></div>
+</form>
+</body>
+</html>

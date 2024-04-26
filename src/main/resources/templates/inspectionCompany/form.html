@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspection Company</title>
+</head>
+<body>
+<form method="post" th:object="${inspComp}">
+  <div>
+    <label id="name">Nazwa firmy:<br>
+      <input th:field="*{name}">
+    </label>
+  </div>
+  <input type="submit" value="Add">
+</form>
+</body>
+</html>

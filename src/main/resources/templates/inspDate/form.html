@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New inspection date</title>
+</head>
+<body>
+<form method="post" th:object="${inspection}">
+  <div>
+    <label for="inspectionDate">Inspection date:<br>
+      <input type="date" th:field="*{inspectionDate}" id="inspectionDate">
+    </label>
+  </div>
+  <div>
+    <label for="inspectionEmail">Select e-mail for notifications:<br>
+      <input type="text" th:field="*{inspectionEmail}" id="inspectionEmail">
+    </label>
+  </div>
+  <div>
+    <label for="inspectionType">Inspection type:<br>
+      <input type="text" th:field="*{inspectionType}" id="inspectionType">
+    </label>
+  </div>
+  <div>
+    <label for="device">Select device: <br>
+      <select th:field="*{device}" id="device">
+        <option th:each="device : ${devices}" th:value="${device.id}" th:text="${device.name}"/>
+      </select>
+    </label>
+  </div>
+  <div>
+    <input type="submit" value="Add">
+  </div>
+</form>
+</body>
+</html>

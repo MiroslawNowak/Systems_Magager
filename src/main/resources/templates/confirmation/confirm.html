@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm delete</title>
+</head>
+<body>
+<h1 th:text="${pageName}"></h1>
+<p th:text="${object.getName()}"></p>
+<p>Confirm deleting</p>
+<p><a th:href="@{${href}}">YES</a></p>
+<p><a th:href="@{'/manager/all'}">No</a></p>
+<p></p>
+</body>
+</html>

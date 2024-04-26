@@ -1,0 +1,18 @@
+<header>
+    <table>
+        <thead>
+            <tr>SYSTEMS MANAGER</tr>
+            <tr><a style="text-align: right; margin-left: 100px;" th:href="@{'/logout'}">LOGOUT</a></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a th:href="@{'/manager/all'}"><button>Devices</button></a></td>
+                <td><a th:href="@{'/technician/all'}"><button>Technicians</button></a></td>
+                <td><a th:href="@{'/manager/admin/form'}"><button>Add new device</button></a></td>
+                <td><a th:href="@{'/company/admin/form'}"><button>Add new company</button></a></td>
+                <td><a th:href="@{'/inspection/admin/form'}"><button>Add new inspection date</button></a></td>
+                <td><a th:href="@{'/technician/admin/form'}"><button>Add new technician</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</header>

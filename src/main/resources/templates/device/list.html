@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Devices</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+<div class="table-main">
+<table>
+    <thead>
+    <th>Devices</th>
+    <th>Inspection Company</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+    <tr th:each="device: ${devices}">
+        <td th:text="${device.name}"></td>
+        <td>
+            <a th:if="${device != null and device.inspectionCompany != null}"
+               th:href="@{'/company/list?inspectionCompanyId=' + ${device.inspectionCompany.id}}"
+               th:text="${device.inspectionCompany.name}"></a>
+        </td>
+        <td>
+            <a th:href="@{'/inspection/list?deviceId=' + ${device.id}}">Details</a>
+            <a th:href="@{'/manager/admin/edit?deviceId=' + ${device.id}}">Edit</a>
+            <a th:href="@{'/manager/admin/delete/confirm?deviceId=' + ${device.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

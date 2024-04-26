@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspection Dates</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+<div class="table-main">
+  <table>
+    <thead>
+    <th>Device</th>
+    <th>Date of inspection</th>
+    <th>Inspection type</th>
+    <th>Email for notification</th>
+    </thead>
+    <tbody>
+    <tr th:each="inspection : ${inspections}">
+      <td th:text="${inspection.device.name}"></td>
+      <td th:text="${inspection.inspectionDate}"></td>
+      <td th:text="${inspection.inspectionType}"></td>
+      <td th:text="${inspection.inspectionEmail}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

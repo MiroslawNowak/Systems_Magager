@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Technicians</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+<div class="table-main">
+<table>
+  <thead>
+  <th>First name</th>
+  <th>Last name</th>
+  <th>Pass validity</th>
+  <th>Phone number</th>
+  <th>Inspection company</th>
+  <th>Actions</th>
+  </thead>
+  <tbody>
+  <tr th:each="technician : ${technicians}">
+    <td th:text="${technician.firstName}"></td>
+    <td th:text="${technician.lastName}"></td>
+    <td th:text="${technician.passValidityDate}"></td>
+    <td th:text="${technician.phoneNumber}"></td>
+    <td>
+      <a th:href="@{'/company/list?inspectionCompanyId=' + ${technician.inspectionCompany.id}}"
+         th:text="${technician.inspectionCompany.name}"></a>
+    </td>
+    <td>
+      <a th:href="@{'/technician/admin/delete/confirm?technicianId=' + ${technician.id}}">Delete</a>
+      <a th:href="@{'/technician/admin/edit?technicianId=' + ${technician.id}}">Edit</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>
