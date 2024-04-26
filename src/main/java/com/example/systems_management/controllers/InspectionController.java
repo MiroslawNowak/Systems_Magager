@@ -4,8 +4,10 @@ import com.example.systems_management.entities.Device;
 import com.example.systems_management.entities.Inspection;
 import com.example.systems_management.service.DeviceService;
 import com.example.systems_management.service.InspectionService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +37,10 @@ public class InspectionController {
     }
 
     @PostMapping("/admin/form")
-    public String createDate(@ModelAttribute(name = "inspection") Inspection inspection) {
+    public String createDate(@Valid @ModelAttribute(name = "inspection") Inspection inspection, BindingResult br) {
+        if (br.hasErrors()) {
+            return "/inspDate/form";
+        }
         inspService.save(inspection);
         return "redirect:/manager/all";
     }

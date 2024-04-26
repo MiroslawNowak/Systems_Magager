@@ -1,6 +1,8 @@
 package com.example.systems_management.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.sql.Date;
@@ -13,16 +15,20 @@ public class Inspection {
     private Long id;
 
     @NotNull
+    @NotEmpty(message = "Podaj email do powiadomień")
+    @Email(message = "Podaj poprawny adres email.")
     private String inspectionEmail;
 
     @NotNull
     private Date inspectionDate;
 
     @NotNull
+    @NotEmpty(message = "Podaj nazwę przeglądu")
     private String inspectionType;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "device_id")
+    @NotNull
     private Device device;
 
 

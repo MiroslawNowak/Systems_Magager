@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>New inspection date</title>
+  <link rel="stylesheet" type="text/css" href="/css/inspectionDateFormStyle.css">
 </head>
 <body>
 <form method="post" th:object="${inspection}">
   <div>
     <label for="inspectionDate">Inspection date:<br>
       <input type="date" th:field="*{inspectionDate}" id="inspectionDate">
+      <span th:if="${#fields.hasErrors('inspectionDate')}"
+            th:errors="*{inspectionDate}"
+            class="error"></span>
     </label>
   </div>
   <div>
     <label for="inspectionEmail">Select e-mail for notifications:<br>
       <input type="text" th:field="*{inspectionEmail}" id="inspectionEmail">
+      <span th:if="${#fields.hasErrors('inspectionEmail')}"
+            th:errors="*{inspectionEmail}"
+            class="error"></span>
     </label>
   </div>
   <div>
     <label for="inspectionType">Inspection type:<br>
       <input type="text" th:field="*{inspectionType}" id="inspectionType">
+      <span th:if="${#fields.hasErrors('inspectionType')}"
+            th:errors="*{inspectionType}"
+            class="error"></span>
     </label>
   </div>
   <div>

@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Inspection Company</title>
+    <link rel="stylesheet" type="text/css" href="/css/inspCompFormStyle.css">
 </head>
 <body>
 <form method="post" th:object="${inspComp}">
   <div>
-    <label id="name">Nazwa firmy:<br>
+    <label id="name">Company name:<br>
       <input th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+              class="error"></span>
     </label>
   </div>
   <input type="submit" value="Add">

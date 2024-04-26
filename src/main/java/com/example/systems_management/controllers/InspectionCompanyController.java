@@ -6,8 +6,10 @@ import com.example.systems_management.entities.Technician;
 import com.example.systems_management.service.DeviceService;
 import com.example.systems_management.service.InspectionCompanyService;
 import com.example.systems_management.service.TechnicianService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +37,10 @@ public class InspectionCompanyController {
     }
 
     @PostMapping("/admin/form")
-    public String addInspectionCompany(@ModelAttribute(name="inspComp") InspectionCompany inspectionCompany) {
+    public String addInspectionCompany(@Valid @ModelAttribute(name="inspComp") InspectionCompany inspectionCompany, BindingResult br) {
+        if (br.hasErrors()) {
+            return "inspectionCompany/form";
+        }
         inspCompService.add(inspectionCompany);
         return "redirect:/manager/all";
     }

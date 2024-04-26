@@ -1,6 +1,7 @@
 package com.example.systems_management.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
+    @NotEmpty(message = "Podaj nazwę urządzenia")
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
