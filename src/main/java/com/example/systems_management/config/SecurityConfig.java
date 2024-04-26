@@ -28,8 +28,6 @@ public class SecurityConfig {
                     form.defaultSuccessUrl("/manager/all", true).permitAll();
                 })
                 .csrf(AbstractHttpConfigurer::disable);
-                /*.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-                .csrf(AbstractHttpConfigurer::disable);*/
                return http.build();
     }
 
