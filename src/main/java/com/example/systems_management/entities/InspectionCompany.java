@@ -1,6 +1,7 @@
 package com.example.systems_management.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -13,7 +14,7 @@ public class InspectionCompany {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 1)
+    @NotEmpty(message = "Podaj nazwę firmy")
     @NotNull
     private String name;
 

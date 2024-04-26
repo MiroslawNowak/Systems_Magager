@@ -4,8 +4,10 @@ import com.example.systems_management.entities.InspectionCompany;
 import com.example.systems_management.entities.Technician;
 import com.example.systems_management.service.InspectionCompanyService;
 import com.example.systems_management.service.TechnicianService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,7 +43,10 @@ public class TechnicianController {
     }
 
     @PostMapping("/admin/form")
-    public String createTechnician(@ModelAttribute(name="technician") Technician technician) {
+    public String createTechnician(@Valid @ModelAttribute(name="technician") Technician technician, BindingResult br) {
+        if (br.hasErrors()) {
+            return "technician/form";
+        }
         technicianService.save(technician);
         return "redirect:/technician/all";
     }
@@ -53,7 +58,10 @@ public class TechnicianController {
     }
 
     @PostMapping("/admin/edit")
-    public String updateDevice(@ModelAttribute Technician technician) {
+    public String updateDevice(@Valid @ModelAttribute Technician technician, BindingResult br) {
+        if (br.hasErrors()) {
+            return "technician/form";
+        }
         technicianService.save(technician);
         return "redirect:/technician/all";
     }

@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Add device</title>
+    <link rel="stylesheet" type="text/css" href="/css/deviceFormStyle.css">
 </head>
 <body>
 <form method="post" th:object="${device}">
     <div>
         <label for="name">Device name: <br>
         <input type="text" th:field="*{name}" id="name"/>
+            <span th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}"
+                  class="error"></span>
         </label>
     </div>
     <div>

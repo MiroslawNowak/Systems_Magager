@@ -1,7 +1,9 @@
 package com.example.systems_management.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.sql.Date;
@@ -14,27 +16,31 @@ public class Technician {
     private Long id;
 
     @NotNull
-    @Size(min = 3)
+    @NotEmpty(message = "Podaj imię")
+    @Size(min = 3, message = "Imię musi zawierać conajmniej trzy znaki")
     private String firstName;
 
     @NotNull
-    @Size(min = 2)
+    @NotEmpty(message = "Podaj nazwisko")
+    @Size(min = 2, message = "Nazwisko musi zawierać conajmniej dwa znaki")
     private String lastName;
 
-    @NotNull
+    @NotNull(message = "Wybierz datę ważności przepustki")
     private Date passValidityDate;
 
-    private Long phoneNumber;
+    @NotEmpty(message = "Podaj numer telefonu")
+    @Size(min = 9, max = 9, message = "Podaj dziewięciocyfrowy numer telefonu")
+    private String phoneNumber;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @NotNull
+    @NotNull(message = "Wybierz firmę. Jeżeli nie ma dostępnych opcji, w pierwszej kolejności dodaj nową firmę z innego formularza.")
     @JoinColumn(name = "inspection_company_id")
     private InspectionCompany inspectionCompany;
 
     public Technician() {
     }
 
-    public Technician(String firstName, String lastName, Date passValidityDate, Long phoneNumber) {
+    public Technician(String firstName, String lastName, Date passValidityDate, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.passValidityDate = passValidityDate;
@@ -89,11 +95,11 @@ public class Technician {
         return this;
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public Technician setPhoneNumber(Long phoneNumber) {
+    public Technician setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
